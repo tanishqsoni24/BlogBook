@@ -1,0 +1,78 @@
+{% extends 'uni_code.html' %}
+
+
+{% block title %}
+{{post}}
+{% endblock %}
+
+{% block css %}
+{% load static %}
+{% load humanize %}
+{% load extras %}
+<link rel="stylesheet" href="{% static 'CSS/readmore.css' %}">
+{% endblock %}
+
+{% block main %}
+
+<div class="post_container">
+    <h1>{{post.Title}}</h1>
+    <img src="/media/{{post.image}}" alt="">
+    <p class="user_detail">
+        <span>By:<b style="color: purple;"> @{{post.username}}</b></span> 
+        <span>Published On: <b style="color: purple;">{{post.pub_date}}</b></span> 
+    </p>
+    <div class="content">
+        <p>{{post.content|safe}}</p>
+    </div>
+</div>
+
+
+<div class="comment_section">
+    <div class="type_section">
+        <h2>Comments ({{comments.count}})</h2>
+        {% if user.is_authenticated %}
+        <form action="/postComment" method="post"> {% csrf_token %}
+            <input type="text" name="comment" placeholder="Enter comment here..." required>
+            <input type="hidden" name="parentSno" value="">
+            <input type="hidden" name="postSno" value="{{post.id}}">
+            <input type="submit" value="Send">
+        </form>
+        
+        {% endif %}
+    </div>
+    {% for i in comments  %}
+    <div class="show_comments">
+        <img src="{% static 'Images/admin.png' %}" alt="">
+        <div class="comment">
+            <b>{{i.user.username}} <span style="font-weight: 100;">{{i.timestamp|naturaltime}}</span></b> 
+            {{i.comment}}
+            <div class="reply_section">
+                {% if user.is_authenticated %}
+                <form action="/postComment" method="post"> {% csrf_token %}
+                    <input type="text" name="comment" placeholder="Enter Reply here..." required>
+                    <input type="hidden" name="parentSno" value="{{i.sno}}">
+                    <input type="hidden" name="postSno" value="{{post.id}}">
+                    <input type="submit" value="Send">
+                </form>
+                {% endif %}
+                <div class="show_replies_outer_box">
+
+                    <div class="show_replies">
+                        {% for reply in replyDict|get_val:i.sno %}
+                        <div class="reply_box">
+                            <img src="{% static 'Images/admin.png' %}" alt="">
+                            <div class="reply">
+                                <b>{{reply.user.username}} <span style="font-weight: 100;">{{i.timestamp|naturaltime}}</span></b> 
+                                {{reply.comment}} <br>
+                            </div>
+                        </div>
+                        
+                        {% endfor %}
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'uni_code.html' %}
+
+
+{% block title %}
+Contact Us
+{% endblock %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'CSS/contactus.css' %}">
+{% endblock %}
+
+
+{% block main %}
+
+<div class="form_box">
+    <div class="desc">
+        <h1>Contact Us</h1>
+        <p>Need to get in touch with us? Fill out the form with your query.</p>
+    </div>
+    <form action="/handlecontact" method="post"> {% csrf_token %}
+        <div class="input_container">
+            <h3>Name</h3>
+            <input type="text" placeholder="Enter name here" name="name">
+        </div>
+        <div class="input_container">
+            <h3>Email</h3>
+            <input type="email" placeholder="Enter email here!" name="email" class="email_text">
+        </div>
+        <div class="input_container">
+            <h3>What can we help you with?</h3>
+            <textarea id="" cols="30" rows="10" name="message" spellcheck="false"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+{% endblock %}

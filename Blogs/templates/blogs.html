@@ -1,0 +1,116 @@
+{% extends 'uni_code.html' %}
+
+
+{% block title %}
+BLOGS
+{% endblock %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'CSS/blogs.css' %}">
+{% endblock %}
+
+{% block main %}
+{% if user.is_authenticated %}
+
+<div class="search">
+    <form action="/search" method="get">
+        <input type="text" name="query" id="query" placeholder="Search Blogs Here" required>
+        <input type="submit" value="Search">
+    </form>
+</div>
+<p class="greet_message">Welcome To My Blogs! ~ <span class="keyword">{{request.user}}</span></p>
+
+<!-- Main Blog Content Template-->
+
+<div class="big_blog_container">
+    {% if all_blogs|length > 0 %}
+    {% for j in all_blogs %}
+    <div class="blog_container">
+        <div class="blog_box">
+            <img src="/media/{{j.image}}" alt="No Image yet" class="zoom">
+            <div class="blog_alignment">
+                <h2 class="title">{{j.Title}}</h2>
+                <div class="blog_content">
+                    <!-- <p>{% for i in j.1|slice:"0:140" %}{{i}}{% endfor %}...<b><a href="/readmore" style="text-decoration: none; color: black;">See All</a></b></p> -->
+                    <!-- <p>{{j.content|truncatechars:140}}<b><a href="/readmore" style="text-decoration: none; color: black;">See All</a></b></p> -->
+                    <div class="preview">    
+                        <p>{{j.content|safe|truncatechars:200}}</p>
+                    </div>
+                    <form action="/{{j.slug}}">
+                        <input type="submit" value="Read More">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="message">
+        No Posts!
+    </div>
+    {% endif %}
+    </div>
+
+<!-- Button -->
+
+<form action="/addblogs">
+    <input type="submit" value="Add Blogs" class="addbutton">
+</form>
+
+
+{% else %}
+
+<div class="search">
+    <form action="/search" method="get">
+        <input type="text" name="query" id="query" placeholder="Search Blogs Here" required>
+        <input type="submit" value="Search">
+    </form>
+</div>
+<p class="greet_message">Welcome To My Blogs! ~ <span class="keyword">GUEST</span></p>
+
+<!-- Main Blog Content Template-->
+
+<div class="big_blog_container">
+    {% for j in all_blogs %}
+    <div class="blog_container">
+        <div class="blog_box">
+            <img src="/media/{{j.image}}" alt="No Image yet" class="zoom">
+            <div class="blog_alignment">
+                <h2 class="title">{{j.Title}}</h2>
+                <div class="blog_content">
+                    <div class="preview">
+                        <p>{{j.content|safe|truncatechars:140}}</p>
+                    </div>
+                    <form action="/{{j.slug}}/">
+                        <input type="submit" value="Read More">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+
+<!-- Button -->
+
+<form action="/handleblogs">
+    <input type="submit" value="Add Blogs" class="addbutton">
+</form>
+
+<!-- Footer -->
+
+
+{% endif %}
+{% endblock %}
+
+{% block js %}
+
+<script>
+    let preview = document.getElementsByClassName('preview');
+    Array.from(preview).forEach((element)=>{
+        element.innerHTML = element.innerText;
+    })
+</script>
+
+{% endblock %}

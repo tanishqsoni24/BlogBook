@@ -1,0 +1,184 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: white;
+}
+
+.navBar{
+    display: flex;
+    /* border: 2px solid red; */
+    justify-content: space-between;
+    /*background: #9D50BB;*/  /* fallback for old browsers */
+    /*background: -webkit-linear-gradient(to right, #6E48AA, #9D50BB);*/  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #6E48AA, #9D50BB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background-color: #48bf91; */
+    height: 4.2rem;
+    box-shadow: 0px 0px 8px black ;
+}
+
+.heading a{ 
+    text-decoration: none;
+}
+
+.heading a h1{
+    /* border: 2px solid red; */
+    color: white;
+    margin: 10px 20px;
+    
+}
+
+.navitems ul{
+    display: flex;
+    list-style: none;
+    /* border: 2px solid red; */
+    width: 46rem;
+    justify-content: center;
+}
+
+.navitems ul li{
+    /* border: 2px solid red; */
+    margin: 10px 12px;
+    padding: 10px 10px;
+}
+
+.navitems ul li a{
+    text-decoration: none;
+    /* border: 2px solid red; */
+    padding: 4px 15px;
+    color: white;
+    transition: all 0.1s ease-in;
+    font-size: large;
+}
+
+.navitems ul li a:hover{
+    color: black;
+    background: white;
+    border-radius: 6px;
+
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+
+}
+
+.bts{
+    /* border: 2px solid red; */
+    background-color: white;
+    width: 5.3rem;
+    height: 1.5rem;
+    margin: 0px 24px 0px 0px;
+    display: inline;
+    border-radius: 8px;
+    transition: all 0.2s ease-in;
+    text-align: center;
+    padding: 7px 0px 0px 0px;
+    text-decoration: none;
+    color: black;
+}
+
+.bts:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    border-radius: 0px;
+}
+
+/* Signup CSS */
+
+main{
+    /* border: 2px solid red; */
+    height: 90vh;
+    background-color: #fcfbf4;
+}
+
+.signupBox{
+    /* border: 2px solid red; */
+    width: 52rem;
+    height: 33rem;
+    margin: auto;
+    position: relative;
+    top: 10%;
+    box-shadow: 0px 0px 15px black;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+.signupBox img{
+    width: 26rem;
+    height: fit-content;
+    position: relative;
+    top: 15%;
+}
+
+.rightbox{
+    border-top-right-radius: 10px;
+    border-end-end-radius: 10px;
+    background: linear-gradient(to right, #6E48AA, #9D50BB);
+    /* background-color: #48bf91; */
+    width: 26rem;
+
+}
+
+.rightbox h3{
+    border-bottom: 2px solid rgb(0, 0, 0);
+    text-align: center;
+    position: relative;
+    top: 15%;
+    margin: auto;
+    width: 10rem;
+    font-size: xx-large;
+    color: #ffffff;
+    padding: 0px 0px 7px 0px;
+}
+
+.rightbox form{
+    /* border: 2px solid red; */
+    position: relative;
+    top: 22%;
+}
+
+.info{
+    display: block;
+    background: none;
+    border: none;
+    border-bottom: 2px solid white;
+    width: 18rem;
+    margin: 1.3rem auto;
+    font-size: large;
+    text-align: center;
+    padding: 0px 0px 5px 0px;
+    color: white;
+}
+
+.info::-webkit-input-placeholder{
+    color: white;
+    font-size: large;
+}
+
+.para_content{
+    /* border: 2px solid red; */
+    width: 18rem;
+    margin: auto;
+    height: 10rem;
+
+}
+
+.btn{
+    border: none;
+    padding: 7px 20px;
+    cursor: pointer;
+    margin: 2.1rem 30px;
+    border-radius: 10px;
+    transition: all 0.2s ease-in;
+}
+
+.btn:hover{
+    transform: scale(1.12);
+    border-radius: 0;
+}

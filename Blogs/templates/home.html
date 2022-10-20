@@ -1,0 +1,155 @@
+{% extends 'uni_code.html' %}
+
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+<style>
+    .big_blog_container{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .blog_container{
+        /* border: 2px solid red; */
+        margin-top: 5%;
+        /* display: inline; */
+        position: relative;
+        left: 5%;
+
+    }
+
+    .blog_box{
+        /* border: 2px solid red; */
+        width: 25rem;
+        height: 33rem;
+        border-radius: 5px;
+        box-shadow: 0px 0px 15px black;
+        margin: 0rem 2rem;
+        transition: all 0.2s ease;
+    }
+
+    .blog_box:hover{
+        transform: scale(1.1);
+    }
+
+    .blog_box img{    
+        width: 25rem;
+        height: 15rem;
+        border-start-start-radius: 5px;
+        /* border-bottom: 2px solid; */
+        border-top-right-radius: 5px;
+    }
+
+    .blog_alignment{
+        /* border: 2px solid; */
+        position: relative;
+        top: -2%;
+        height: 37vh;
+        border-top: none;
+    }
+
+    .title{
+        /* border: 2px solid; */
+        margin: 2% 0px 0px 6%;
+        height: 13vh;
+    }
+
+    .blog_content p{
+        width: 23vw;
+        margin-left: 4%;
+        /* border: 2px solid red; */
+    }
+
+    .blog_content{
+        /* border: 2px solid; */
+        margin-left: 2%;
+        height: 16vh;
+    }
+
+    .blog_content form{
+        /* border: 2px solid; */
+        /* height: 9vh; */
+        display: inline;
+        position: relative;
+        top: 32%;
+        left: 3%;
+    }
+
+    .blog_content form input[type='submit']{
+        border: none;
+        background: linear-gradient(to right, #6E48AA, #9D50BB);
+        padding: 15px 20px;
+        border-radius: 10px;
+        /* box-shadow: 6px 6px 5px 0px #6e48aa; */
+        cursor: pointer;
+        color: white;
+        transition: all 0.2s ease-in;
+    }
+
+
+    .blog_content form input[type='submit']:hover{
+        transform: scale(1.1);
+        border-radius: 0px;
+    }
+
+    .pageline{
+        color: purple;
+        font-size: xxx-large;
+        margin-top: 5%;
+        font-family: fangsong;
+        text-align: center;
+    }
+
+    .navBar{
+        display: flex;
+        /* border: 2px solid red; */
+        justify-content: space-between;
+        background: linear-gradient(to right, #6E48AA, #9D50BB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        /* background-color: #48bf91; */
+        height: 4.2rem;
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+
+<p class="pageline">Top 3 trending blogs</p>
+<div class="big_blog_container">
+    {% for posts in allblogs %}
+    {% for post in posts %}
+    <div class="blog_container">
+        <div class="blog_box">
+            <img src="/media/{{post.image}}" alt="No Image yet" class="zoom">
+            <div class="blog_alignment">
+                <h2 class="title">{{post.Title}}</h2>
+                <div class="blog_content">
+                    <div class="preview">    
+                        <p>{{post.content|safe|truncatechars:140}}</p>
+                    </div>
+                    <form action="/{{post.slug}}">
+                        <input type="submit" value="Read More">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block js %}
+
+<script>
+    let preview = document.getElementsByClassName('preview');
+    Array.from(preview).forEach((element)=>{
+        element.innerHTML = element.innerText;
+    })
+</script>
+
+{% endblock %}

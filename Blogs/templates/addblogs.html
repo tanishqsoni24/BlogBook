@@ -1,0 +1,64 @@
+{% extends 'uni_code.html' %}
+
+
+{% block title %}
+Add Blogs
+{% endblock %}
+
+{% block js %}
+
+<script>
+
+    // For Showing uploaded file Name
+
+    let uploadButton = document.getElementById("file");
+    let fileName = document.getElementById("file-name");
+
+    uploadButton.onchange = () => {
+        let reader = new FileReader()
+        reader.readAsDataURL(uploadButton.files[0]);
+        console.log(uploadButton.files[0]);
+        fileName.textContent = uploadButton.files[0].name;
+    }
+</script>
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+      selector: '#mytextarea',
+      plugins: [
+        'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+        'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
+        'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+      ],
+      toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | ' +
+        'alignleft aligncenter alignright alignjustify | ' +
+        'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help'
+    });
+  </script>
+
+{% endblock %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'CSS/addblogs.css' %}">
+{% endblock %}
+
+{% block main %}
+
+
+<div class="add_blog_block">
+    <form action="/handleaddblogs" method="post" enctype="multipart/form-data"> {% csrf_token %}
+        <h2>Title</h2>
+        <input type="text" name="title" placeholder="Enter Title Here">
+        <h2>Upload Your Thumbnail</h2>      
+        <div class="file_upload">
+            <input type="file" name="image" id="file">
+            <label for="file">Upload</label>
+            <p id="file-name"></p>
+        </div>  
+        <textarea id="mytextarea" name="content">Hello, World!</textarea>
+        <input type="submit" value="Add Post">
+    </form>
+</div>
+{% endblock %}

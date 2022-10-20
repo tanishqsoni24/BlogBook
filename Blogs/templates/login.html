@@ -1,0 +1,34 @@
+{% extends 'uni_code.html' %}
+
+
+{% block title %}
+LOG IN 
+{% endblock %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'CSS/login.css' %}">
+{% endblock %}
+
+{% block main %}
+<main> 
+    <div class="signupBox">
+        <img src="{% static 'Images/chr.png' %}" alt="">
+        <div class="rightbox">
+            <h3 class="fontPrimary">Login</h3>
+            <form action="/submitlogin" method="post"> {% csrf_token %}
+                    <input type="text" name="loginusername" placeholder="Username" class="info">
+                    <input type="password" name="loginpassword" id="mypassword" placeholder="Password" class="info">
+                    <div class="para_content">
+                        <div class="remember">    
+                            <input type="checkbox" checked>
+                            <label for="remember" class="remClass"> : Remember me</label>
+                        </div>
+                        <input type="submit" value="Submit" class="btn">
+                        <input type="reset" value="Reset" class="btn">
+                    </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'uni_code.html' %}
+
+
+{% block title %}
+SEARCH RESULTS
+{% endblock %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'CSS/blogs.css' %}">
+{% endblock %}
+
+{% block main %}
+{% if user.is_authenticated %}
+<div class="search">
+    <form action="">
+        <input type="text" placeholder="Search Blogs Here">
+        <input type="submit" value="Search">
+    </form>
+</div>
+<p class="greet_message">Welcome To Search Results ~ <span class="keyword">{{request.user}}</span></p>
+
+<!-- Main Blog Content Template-->
+
+{% if all_blogs|length < 1 %}
+<p style="margin: 5rem auto; text-align: center; font-size: xx-large;">Your Search Query: <b>"{{query}}"</b> didn't match any documents</p>
+{% endif %}
+
+<div class="big_blog_container">
+    {% for j in all_blogs %}
+    <div class="blog_container">
+        <div class="blog_box">
+            <img src="/media/{{j.image}}" alt="No Image yet" class="zoom">
+            <div class="blog_alignment">
+                <h2 class="title">{{j.Title}}</h2>
+                <div class="blog_content">
+                    <!-- <p>{% for i in j.1|slice:"0:140" %}{{i}}{% endfor %}...<b><a href="/readmore" style="text-decoration: none; color: black;">See All</a></b></p> -->
+                    <!-- <p>{{j.content|truncatechars:140}}<b><a href="/readmore" style="text-decoration: none; color: black;">See All</a></b></p> -->
+                    <p>{{j.content|truncatechars:140}}<b><a href="/readmore" style="text-decoration: none; color: black;">See All</a></b></p>
+                    <form action="/readmore">
+                        <input type="submit" value="Read More">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+
+<!-- Button -->
+
+<form action="/addblogs">
+    <input type="submit" value="Add Blogs" class="addbutton">
+</form>
+
+
+{% else %}
+
+<div class="search">
+    <form action="/search" method="get">
+        <input type="text" name="query" id="query" placeholder="Search Blogs Here" required>
+        <input type="submit" value="Search">
+    </form>
+</div>
+<p class="greet_message">Welcome To Search Results ~ <span class="keyword">Guest</span></p>
+
+<!-- Main Blog Content Template-->
+
+{% if all_blogs|length < 1 %}
+<p style="margin: 5rem auto; text-align: center; font-size: xx-large;">Your Search Query: <b>"{{query}}"</b> didn't match any documents</p>
+{% endif %}
+
+<div class="big_blog_container">
+    {% for j in all_blogs %}
+    <div class="blog_container">
+        <div class="blog_box">
+            <img src="/media/{{j.image}}" alt="No Image yet" class="zoom">
+            <div class="blog_alignment">
+                <h2 class="title">{{j.Title}}</h2>
+                <div class="blog_content">
+                    <p>{{j.content|truncatechars:140}}<b><a href="/readmore" style="text-decoration: none; color: black;">See All</a></b></p>
+                    <form action="/readmore">
+                        <input type="submit" value="Read More">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+
+<!-- Button -->
+
+<form action="/handleblogs">
+    <input type="submit" value="Add Blogs" class="addbutton">
+</form>
+
+<!-- Footer -->
+
+
+{% endif %}
+{% endblock %}

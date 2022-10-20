@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bugera will help Peoples in growing their business by providing services of web development,android development and many more">
+    <meta name="keywords" content="Web development,Android development,video editing">
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@200&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <style>
+        *{
+            font-family: 'Anek Malayalam', sans-serif;
+        }
+
+        body{
+            overflow-y: scroll;
+            overflow-x: hidden; 
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to right, #6E48AA, #9D50BB);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: purple;
+        }
+
+        #alert{
+            position: absolute;
+            top: 9%;
+            border-end-end-radius: 3px;
+            border-top-right-radius: 3px;
+            padding: 8px;
+            background: #ffcd71;
+            width: 12vw;
+            animation: slideme 2s ease-in-out;
+            border-left: 4px solid #764c00;
+            border-right: 4px solid #764c00;
+            /* animation: slideme 3s linear forwards; */
+        }
+
+        @keyframes slideme{
+            0%{
+                position: absolute;
+                left: -13%;
+            }
+            
+            25%{
+                position: absolute;
+                left: 0%;   
+            } 
+
+            75%{
+                position: absolute;
+                left: 0%;   
+            } 
+            
+            100%{
+                position: absolute;
+                left: -13%;
+            }   
+        }
+
+        .footer{
+            border-top: 2px solid purple;
+            margin: 5rem 0rem 0rem 0rem;    
+            height: 50vh;
+            background: whitesmoke;
+        }
+
+        .copyright{
+            color: #fff;
+            font-size: larger;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 0.3rem;
+        }
+
+        .full_footer_container{
+            /* border-bottom: 1px solid gray; */
+            display: flex;
+            height: 22rem;
+        }
+
+        .c_1{
+            width: 19rem;
+            /* border: 2px solid red; */
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            height: 10rem;
+            position: relative;
+            top: 16%;
+            left: 2%;
+        }
+
+        .c_1 h2{
+            display: flex;
+            /* border-bottom: 1px solid aqua; */
+            justify-content: center;
+            width: 14rem;
+            letter-spacing: 4px;
+            height: 2.6rem;
+            color: purple;
+            width: 12rem;
+        }
+
+        .c_1 p{
+            text-align: left;
+            /* border: 2px solid red; */
+            color: rgb(0,0,0);
+            padding: 1rem 4rem 0rem 65px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .c_1 p span{
+            color: purple;
+        }
+
+        .social_container{
+            position: relative;
+            top: 13%;
+            left: -8%;
+        } 
+
+        .social_container img{
+            width: 26px;
+            margin: 0px 5px;
+        }
+
+        .c_2{
+            /* border: 2px solid red; */
+            /* display: inline-block; */
+            position: relative;
+            top: 19%;
+            left: 7%;
+            width: 12rem;
+            height: 12rem;
+        }
+
+
+        .c_2 h3{
+            color: purple;
+            /* border: 2px solid red; */
+            margin-bottom: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        .c_2 ul li{
+            /* border: 2px solid red; */
+            font-size: 18px;
+            /* font-weight: 600; */
+            list-style: none;
+            letter-spacing: 1px;
+            padding: 5px 0rem;
+        }
+
+        .c_2 ul li a{
+            color: black;
+            text-decoration: none;
+        }
+
+        .c_3{
+            /* border: 2px solid red; */
+            /* display: inline-block; */
+            position: relative;
+            top: 19%;
+            left: 9%;
+            width: 12rem;
+            height: 12rem;
+        }
+
+
+        .c_3 h3{
+            color: purple;
+            /* border: 2px solid red; */
+            margin-bottom: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        .c_3 ul li{
+            /* border: 2px solid red; */
+            font-size: 18px;
+            /* font-weight: 600; */
+            list-style: none;
+            letter-spacing: 1px;
+            padding: 5px 0rem;
+        }
+        
+        .c_3 ul li a{
+            text-decoration: none;
+            color: black;
+        }
+
+        .c_4{
+            /* border: 2px solid red; */
+            /* display: inline-block; */
+            position: relative;
+            top: 19%;
+            left: 7.5%;
+            width: 12rem;
+            height: 12rem;
+        }
+
+
+        .c_4 h3{
+            color: purple;
+            /* border: 2px solid red; */
+            margin-bottom: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        .c_4 ul li{
+            /* border: 2px solid red; */
+            color: black;
+            font-size: 18px;
+            /* font-weight: 600; */
+            list-style: none;
+            letter-spacing: 1px;
+            padding: 5px 0rem;
+        }
+        .c_5{
+            /* border: 2px solid red; */
+            /* display: inline-block; */
+            position: relative;
+            top: 19%;
+            left: 15%;
+            width: 30rem;
+            height: 12rem;
+        }
+
+
+        .c_5 h3{
+            color: purple;
+            /* border: 2px solid red; */
+            margin-bottom: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        .c_5 input{
+            border: none;
+            border-bottom: 1px solid purple;
+            background: none;
+            padding: 9px 0px;
+            width: 15rem;
+            display: block;
+            font-size: larger;
+        }
+
+        ::-webkit-input-placeholder {
+            color: black;
+            font-size: large;
+        }
+
+        .c_5 button{
+            margin-top: 1.5rem;
+            font-weight: 600;
+            border: none;
+            background: linear-gradient(to right, #6E48AA, #9D50BB);
+            padding: 15px 20px;
+            border-radius: 10px;
+            /* box-shadow: 6px 6px 5px 0px #6e48aa; */
+            cursor: pointer;
+            color: white;
+            transition: all 0.2s ease-in;
+        }
+
+        .c_5 button:hover{
+            transform: scale(1.1);
+            border-radius: 0px;
+        }
+
+    </style>
+    <title>{% block title %}{% endblock %}</title>
+    {% block css %}{% endblock %}
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Corinthia&family=Cormorant+Garamond:wght@300&family=Rampart+One&family=Satisfy&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="after">
+            <div class="navBar">
+                <div class="heading">
+                    <a href="/"><h1 class="h1Class text-white">Console Cafe</h1></a>
+                </div>
+                <div class="navitems">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/Blogs" id="blogs">Blog</a></li>                
+                        <li><a href="/contactus">Contact us</a></li>
+                        <li><a href="our_services.html">About US</a></li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    {% if user.is_authenticated %}
+                    <div class="show_user_id">
+                        <div class="shown">
+                            <a href="/userid" class="id_box">{{request.user}}</a>        
+                        </div>
+                        <div class="block">
+                            <a href="/myblogs" class="id_box">My Blogs</a>                    
+                            <a href="/logout" class="id_box">LogOut</a>                    
+                        </div>
+                    </div>
+                    {% else %}
+                    <a class="bts" href="/login">Login</a>
+                    <a class="bts" href="/Sign_Up">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" id="alert" {% endif %}>
+        {{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- main content -->
+
+
+    {% block main %}{% endblock %}
+
+
+<!-- Footer Section -->
+
+<div class="footer_container">
+
+    <section class="footer">
+        <div class="full_footer_container">
+            <div class="c_1">
+            <h2>CONSOLE &nbsp;&nbsp;<span>CAFE</span></h2>
+            <p>Blogging is a conversation, <span>not a code.</span></p>
+            <div class="social_container">
+                <img src="Plugins/Instagram.png" alt="">
+                <img src="Plugins/LinkedIN.png" alt="">
+                <img src="Plugins/Github.png" alt="">
+                <img src="Plugins/Discord.png" alt="">
+            </div>
+        </div>
+        <div class="c_2">
+            <h3>EXPLORE</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/Blogs">Blogs</a></li>
+                <li><a href="#">About US</a></li>
+                <li><a href="/contactus">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="c_3">
+            <h3>LEGALs</h3>
+            <ul>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Priv<a href="">acies</a></li>
+            </ul>
+        </div>
+        <div class="c_4">
+            <h3>OFFICIALS</h3>
+            <ul>
+                <li>www.tanishqsoni.com</li>
+            </ul>
+        </div>
+        <div class="c_5">
+            <h3>NEWSLETTER</h3>
+            <form action="/emails" method="post"> {% csrf_token %}
+                <input type="email" name="email" placeholder="Enter Your Email" required>
+                <button type="submit" class="btn">Connect</button>
+            </form>
+        </div>    
+    </div>
+</section>
+</div>
+</body>
+<script>
+    setTimeout(function(){
+        if ($('#alert').length > 0) {
+            $('#alert').remove();
+        }
+    },1999);
+</script>
+{% block js %}{% endblock %}
+
+
+</html>

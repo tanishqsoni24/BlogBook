@@ -1,0 +1,34 @@
+{% extends 'uni_code.html' %}
+
+
+{% block title %}
+SIGN UP
+{% endblock %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'CSS/signup.css' %}">
+{% endblock %}
+
+{% block main %}
+<main> 
+    <div class="signupBox">
+        <img src="{% static 'Images/chr.png' %}" alt="">
+        <div class="rightbox">
+            <h3 class="fontPrimary">Sign Up</h3>
+            <form action="/submitregister" method="post"> {% csrf_token %}
+                <div class="input_field">
+                    <input type="text" name="username" placeholder="Username" class="info" required>
+                    <input type="email" name="email" id="myemail" placeholder="Enter your Email" class="info" required>
+                    <input type="password" name="password" id="mypassword" placeholder="Password" class="info" required>
+                    <input type="password" name="repass" id="mypassword" placeholder="Re-enter Password" class="info" required>
+                </div>
+                    <div class="para_content">
+                        <input type="submit" value="Submit" class="btn">
+                        <input type="reset" value="Reset" class="btn">
+                    </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}
